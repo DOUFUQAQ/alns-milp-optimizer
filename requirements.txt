@@ -1,0 +1,28 @@
+# ============================================================
+# 依赖说明（按用途分组，全部都是代码里真实 import 的包）
+# ============================================================
+
+# ---- 核心：只跑 ALNS + 合成算例，装这 4 个就够了 ----
+numpy>=1.24
+pandas>=2.0
+PyYAML>=6.0
+tqdm>=4.65
+
+# ---- 可视化：src/visualizer.py、experiments/* ----
+matplotlib>=3.7
+seaborn>=0.12
+
+# ---- 真实路网 / 交互地图：src/osm_data_loader.py、src/map_visualizer.py ----
+# 注意：代码用的是 osmnx 1.x 的 API（geometries_from_place /
+# graph_from_bbox(north=..., south=...)），osmnx 2.0 改了签名，所以锁在 <2.0
+osmnx>=1.9,<2.0
+networkx>=3.0
+geopandas>=0.14
+shapely>=2.0
+folium>=0.14
+branca>=0.6
+
+# ---- MILP 精确求解：src/milp_model.py ----
+# gurobipy 是商业求解器，pip 装包之外还需要 license（学术可免费申请）。
+# 不装也能跑 ALNS：milp_model.py 对 gurobipy 做了可选导入。
+gurobipy>=11.0
