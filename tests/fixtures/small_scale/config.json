@@ -1,0 +1,70 @@
+{
+  "geography": {
+    "area_size": [
+      10,
+      10
+    ],
+    "depot_location": [
+      5,
+      5
+    ],
+    "num_stations": 4,
+    "num_charging_stations": 2,
+    "num_customers": 20
+  },
+  "ev": {
+    "speed": 40,
+    "battery_capacity": 60,
+    "energy_consumption": 0.2,
+    "load_capacity": 500,
+    "fixed_cost": 200,
+    "charging_rate": 50,
+    "charging_cost": 0.8
+  },
+  "uav": {
+    "num_drones": 3,
+    "speed": 60,
+    "battery_capacity": 1.5,
+    "energy_consumption": 0.03,
+    "load_capacity": 5,
+    "fixed_cost": 1.0,
+    "launch_time": 2,
+    "landing_time": 1
+  },
+  "customers": {
+    "demand_range": [
+      0.5,
+      4.0
+    ],
+    "service_time": 3,
+    "time_window_type": "medium",
+    "time_window_width": {
+      "wide": 120,
+      "medium": 60,
+      "narrow": 30
+    }
+  },
+  "costs": {
+    "energy_weight": 1.0,
+    "time_weight": 0.5,
+    "carbon_weight": 0.3,
+    "delay_penalty": 10.0,
+    "carbon_factor": 0.5
+  },
+  "solver": {
+    "method": "MILP",
+    "time_limit": 300,
+    "mip_gap": 0.01,
+    "threads": -1,
+    "log_output": true
+  },
+  "output": {
+    "save_solution": true,
+    "save_visualization": true,
+    "output_format": [
+      "json",
+      "csv",
+      "png"
+    ]
+  }
+}
