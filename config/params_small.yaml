@@ -1,0 +1,62 @@
+# 小规模算例参数配置
+
+# 地理范围设置
+geography:
+  area_size: [10, 10]  # km x km
+  depot_location: [5, 5]  # 仓库位置
+  num_stations: 4  # EV停靠站点数（不含仓库）
+  num_charging_stations: 2  # 充电站数量
+  num_customers: 20  # 客户数量
+
+# EV参数
+ev:
+  speed: 40  # km/h
+  battery_capacity: 60  # kWh
+  energy_consumption: 0.20  # kWh/km
+  load_capacity: 500  # kg
+  fixed_cost: 200  # 元/辆
+  charging_rate: 50  # kW (充电功率)
+  charging_cost: 0.8  # 元/kWh
+
+# UAV参数
+uav:
+  num_drones: 3  # 无人机数量
+  speed: 60  # km/h
+  battery_capacity: 1.5  # kWh
+  energy_consumption: 0.03  # kWh/km
+  load_capacity: 5  # kg
+  fixed_cost: 1.0  # 元/次起飞
+  launch_time: 2  # 分钟
+  landing_time: 1  # 分钟
+
+# 客户需求
+customers:
+  demand_range: [0.5, 4.0]  # kg
+  service_time: 3  # 分钟
+  time_window_type: "medium"  # wide/medium/narrow
+  time_window_width:
+    wide: 120  # 分钟
+    medium: 60
+    narrow: 30
+
+# 成本权重
+costs:
+  energy_weight: 1.0
+  time_weight: 0.5  # 元/分钟
+  carbon_weight: 0.3  # 元/kg CO2
+  delay_penalty: 10.0  # 元/分钟
+  carbon_factor: 0.5  # kg CO2/kWh (电网碳排放因子)
+
+# 求解器参数
+solver:
+  method: "MILP"
+  time_limit: 300  # 秒
+  mip_gap: 0.01  # 1%
+  threads: -1  # 使用所有可用线程
+  log_output: true
+
+# 输出设置
+output:
+  save_solution: true
+  save_visualization: true
+  output_format: ["json", "csv", "png"]
