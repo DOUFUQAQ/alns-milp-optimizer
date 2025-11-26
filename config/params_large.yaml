@@ -1,0 +1,84 @@
+# 大规模算例参数配置
+
+# 地理范围设置
+geography:
+  area_size: [30, 30]  # km x km
+  depot_location: [15, 15]  # 仓库位置
+  num_stations: 20  # EV停靠站点数（不含仓库）
+  num_charging_stations: 5  # 充电站数量
+  num_customers: 200  # 客户数量
+
+# EV参数
+ev:
+  speed: 40  # km/h
+  battery_capacity: 60  # kWh
+  energy_consumption: 0.20  # kWh/km
+  load_capacity: 500  # kg
+  fixed_cost: 50  # 元/辆
+  charging_rate: 50  # kW
+  charging_cost: 0.8  # 元/kWh
+
+# UAV参数
+uav:
+  num_drones: 10  # 无人机数量
+  speed: 60  # km/h
+  battery_capacity: 5.0  # kWh (从1.5提高到5.0，支持最远83km)
+  energy_consumption: 0.03  # kWh/km
+  load_capacity: 10  # kg (从5提高到10，支持更多客户)
+  fixed_cost: 2.0  # 元/次起飞 (降低固定成本使UAV更有吸引力)
+  launch_time: 2  # 分钟
+  landing_time: 1  # 分钟
+
+# 客户需求
+customers:
+  demand_range: [0.5, 4.0]  # kg
+  service_time: 3  # 分钟
+  time_window_type: "medium"  # wide/medium/narrow
+  time_window_width:
+    wide: 120  # 分钟
+    medium: 60
+    narrow: 30
+
+# 成本权重
+costs:
+  energy_weight: 3.0
+  time_weight: 1.5  # 元/分钟
+  carbon_weight: 0.3  # 元/kg CO2
+  delay_penalty: 10.0  # 元/分钟
+  carbon_factor: 0.5  # kg CO2/kWh
+
+# ALNS算法参数
+alns:
+  max_iterations: 10000
+  segment_size: 100  # 每段迭代数
+  num_destroy_operators: 4
+  num_repair_operators: 4
+  
+  # 权重更新参数
+  weights:
+    start: [10, 5, 2, 1]  # [最优解, 更好解, 接受解, 拒绝解]
+    decay: 0.95
+    
+  # 温度参数（模拟退火）
+  temperature:
+    start: 10000
+    end: 1
+    cooling_rate: 0.9975
+    
+  # 破坏参数
+  destroy:
+    min_removal: 10  # 最少移除客户数
+    max_removal: 50  # 最多移除客户数
+    removal_percentage: 0.25  # 移除比例
+    
+  # 修复参数
+  repair:
+    noise_parameter: 0.05  # 贪心插入的噪声
+    k_regret: 4  # k-regret插入的k值
+
+# 输出设置
+output:
+  save_solution: true
+  save_visualization: true
+  output_format: ["json", "csv", "png"]
+  log_interval: 100  # 每N次迭代记录一次日志
