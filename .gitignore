@@ -1,0 +1,58 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# ---- 虚拟环境 ----
+venv/
+.venv/
+env/
+ENV/
+
+# ---- 测试 / 覆盖率 ----
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.mypy_cache/
+.ruff_cache/
+
+# ---- 编辑器 ----
+.idea/
+.vscode/
+*.swp
+.DS_Store
+
+# ---- 凭据（仓库里不放任何密钥） ----
+.env
+.env.*
+!.env.example
+*.lic
+
+# ---- 运行产物：实验数据、缓存、图表都不进仓库 ----
+data/
+cache/
+results/
+outputs/
+logs/
+*.log
+
+# 求解/绘图产物
+*.html
+*.pdf
+*.docx
+*.xlsx
+alns_*.csv
+alns_*.json
+*_statistics.json
+route.png
+convergence.png
+cost_breakdown.png

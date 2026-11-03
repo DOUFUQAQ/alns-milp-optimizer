@@ -1,0 +1,4 @@
+# 开发 / 测试依赖（跑测试其实只需要标准库 unittest）
+pytest>=7.4
+pytest-cov>=4.1
+ruff>=0.5
