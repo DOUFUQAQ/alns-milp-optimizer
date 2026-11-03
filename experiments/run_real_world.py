@@ -424,7 +424,7 @@ def run_real_world_experiment(city: str = None,
     for idx, station in stations.iterrows():
         folium.Marker(
             location=[station['lat'], station['lon']],
-            popup=f"<b>{station.get('name', f'站点{station['id']}')}</b>",
+            popup=f"<b>{station.get('name', '站点' + str(station['id']))}</b>",
             icon=folium.Icon(color='green', icon='truck', prefix='fa'),
             tooltip=station.get('name', f'站点{station["id"]}')
         ).add_to(markers_layer)
